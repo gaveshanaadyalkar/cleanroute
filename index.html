@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CleanRoute | Smart Waste Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            ♻️ CleanRoute
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#bins">Bins</a>
+            <a href="#route">Route</a>
+            <a href="#report">Report</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                SMART WASTE MANAGEMENT
+            </div>
+
+            <h1>
+                Smarter Waste Collection.
+                <span>Cleaner Cities.</span>
+            </h1>
+
+            <p>
+                CleanRoute helps municipalities and waste
+                collection teams identify critical bins and
+                generate efficient collection routes.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="generateRoute()">
+                    🚛 Generate Smart Route
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="scrollToSection('report')">
+                    Report a Bin
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="route-circle">
+
+                <div class="truck">
+                    🚛
+                </div>
+
+                <div class="bin bin1">🗑️</div>
+                <div class="bin bin2">🗑️</div>
+                <div class="bin bin3">🗑️</div>
+                <div class="bin bin4">🗑️</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard" class="section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="small-title">
+                    LIVE OVERVIEW
+                </p>
+
+                <h2>
+                    Waste Collection Dashboard
+                </h2>
+            </div>
+
+            <div class="live">
+                <span></span>
+                System Live
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    🗑️
+                </div>
+
+                <p>Total Bins</p>
+
+                <h3 id="totalBins">
+                    8
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    🚨
+                </div>
+
+                <p>Critical Bins</p>
+
+                <h3 id="criticalBins">
+                    3
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    ⚠️
+                </div>
+
+                <p>Need Collection</p>
+
+                <h3 id="needCollection">
+                    5
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    📊
+                </div>
+
+                <p>Average Fill Level</p>
+
+                <h3 id="averageFill">
+                    72%
+                </h3>
+
+            </div>
+
+        </div>
+<div class="bin-status">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="small-title">
+                BIN MONITORING
+            </p>
+
+            <h2>
+                Current Bin Status
+            </h2>
+        </div>
+
+    </div>
+
+    <div id="binList"></div>
+
+</div>
+    </section>
+
+    <!-- ================= BINS ================= -->
+
+    <section id="bins" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="small-title">
+                    MONITORING
+                </p>
+
+                <h2>
+                    Waste Bin Status
+                </h2>
+
+            </div>
+
+            <button
+                class="refresh-btn"
+                onclick="refreshData()">
+                ↻ Refresh
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Bin</th>
+                        <th>Location</th>
+                        <th>Fill Level</th>
+                        <th>Type</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="binTable">
+
+                    <!-- JavaScript will insert bins here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ROUTE ================= -->
+
+    <section id="route" class="section">
+
+        <div class="route-section">
+
+            <div class="route-info">
+
+                <p class="small-title">
+                    INTELLIGENT ROUTING
+                </p>
+
+                <h2>
+                    Optimized Collection Route
+                </h2>
+
+                <p>
+                    CleanRoute prioritizes bins based on
+                    fill level and distance, helping
+                    collection teams reduce unnecessary
+                    travel.
+                </p>
+
+
+                <div class="route-stats">
+
+                    <div>
+                        <strong id="routeBins">
+                            5
+                        </strong>
+
+                        <span>
+                            Bins
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <strong id="routeDistance">
+                            8.4
+                        </strong>
+
+                        <span>
+                            km
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <strong id="routeTime">
+                            32
+                        </strong>
+
+                        <span>
+                            min
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="generateRoute()">
+
+                    🚛 Optimize Route
+
+                </button>
+
+            </div>
+
+
+            <!-- Fake Map -->
+
+            <div class="map">
+
+                <div class="map-label">
+                    📍 Collection Area
+                </div>
+
+                <div class="map-route">
+
+                    <div class="map-point point1">
+                        <span>1</span>
+                    </div>
+
+                    <div class="map-point point2">
+                        <span>2</span>
+                    </div>
+
+                    <div class="map-point point3">
+                        <span>3</span>
+                    </div>
+
+                    <div class="map-point point4">
+                        <span>4</span>
+                    </div>
+
+                    <div class="map-point point5">
+                        <span>5</span>
+                    </div>
+
+                </div>
+
+                <div class="depot">
+                    🏢 Depot
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= REPORT ================= -->
+
+    <section id="report" class="section">
+
+        <div class="report-container">
+
+            <div class="report-text">
+
+                <p class="small-title">
+                    CITIZEN REPORTING
+                </p>
+
+                <h2>
+                    Report an Overflowing Bin
+                </h2>
+
+                <p>
+                    Citizens can quickly report overflowing
+                    or damaged waste bins so the collection
+                    team can respond faster.
+                </p>
+
+            </div>
+
+
+            <form id="reportForm">
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Enter location"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Bin Condition
+                    </label>
+
+                    <select id="condition">
+
+                        <option>
+                            Overflowing
+                        </option>
+
+                        <option>
+                            Almost Full
+                        </option>
+
+                        <option>
+                            Damaged
+                        </option>
+
+                        <option>
+                            Missing
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Describe the problem"></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    Submit Report
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="logo">
+            ♻️ CleanRoute
+        </div>
+
+        <p>
+            Smart technology for cleaner cities.
+        </p>
+
+        <p class="copyright">
+            © 2026 CleanRoute Hackathon Project
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+    <!-- ================= REPORT WASTE ================= -->
+
+<section class="report-section" id="report">
+
+    <div class="report-container">
+
+        <div class="report-heading">
+            <div class="badge">REPORT WASTE</div>
+
+            <h2>Report a Waste Problem</h2>
+
+            <p>
+                Help keep your city clean by reporting overflowing
+                or missed waste collection points.
+            </p>
+        </div>
+
+        <form id="reportForm">
+
+            <div class="form-group">
+                <label for="location">📍 Waste Bin Location</label>
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter location"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="wasteType">🗑️ Waste Type</label>
+
+                <select id="wasteType" required>
+                    <option value="">Select waste type</option>
+                    <option value="Wet Waste">Wet Waste</option>
+                    <option value="Dry Waste">Dry Waste</option>
+                    <option value="Plastic Waste">Plastic Waste</option>
+                    <option value="Mixed Waste">Mixed Waste</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="problem">⚠️ Problem</label>
+
+                <select id="problem" required>
+                    <option value="">Select problem</option>
+                    <option value="Bin Full">Bin is Full</option>
+                    <option value="Overflowing">Bin is Overflowing</option>
+                    <option value="Missed Collection">Missed Collection</option>
+                    <option value="Damaged Bin">Damaged Bin</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">📝 Description</label>
+
+                <textarea
+                    id="description"
+                    rows="4"
+                    placeholder="Describe the problem..."
+                ></textarea>
+            </div>
+
+            <button type="submit" class="report-btn">
+                Submit Report
+            </button>
+
+        </form>
+
+        <div id="successMessage" class="success-message">
+            ✅ Report submitted successfully!
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= SMART ROUTE ================= -->
+
+<section class="route-section" id="route">
+
+    <div class="route-container">
+
+        <div class="route-heading">
+            <div class="badge">SMART ROUTE</div>
+
+            <h2>Plan an Efficient Collection Route</h2>
+
+            <p>
+                Select waste collection points and generate
+                a suggested route for the collection team.
+            </p>
+        </div>
+
+        <div class="route-card">
+
+            <h3>📍 Select Collection Points</h3>
+
+            <label class="location-option">
+                <input type="checkbox" value="Main Gate">
+                Main Gate
+            </label>
+
+            <label class="location-option">
+                <input type="checkbox" value="College Road">
+                College Road
+            </label>
+
+            <label class="location-option">
+                <input type="checkbox" value="Market Area">
+                Market Area
+            </label>
+
+            <label class="location-option">
+                <input type="checkbox" value="Residential Area">
+                Residential Area
+            </label>
+
+            <label class="location-option">
+                <input type="checkbox" value="Bus Stop">
+                Bus Stop
+            </label>
+
+            <button
+                type="button"
+                class="route-btn"
+                onclick="generateRoute()">
+                🚛 Generate Smart Route
+            </button>
+
+        </div>
+
+        <div id="routeResult" class="route-result">
+
+            <h3>🗺️ Suggested Collection Route</h3>
+
+            <div id="routeList"></div>
+
+            <p id="routeMessage"></p>
+
+        </div>
+
+    </div>
+
+</section>
+</body>
+
+</html>
